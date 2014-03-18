@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/bedework/libcache/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/bedework/libcache/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/bedework/libcache/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="/home/douglm/.m2/repository/net/fortuna/ical4j/ical4j/1.0/ical4j-1.0.jar"/>
+	<classpathentry kind="lib" path="/bedework/libcache/commons-codec-1.5.jar"/>
+	<classpathentry kind="lib" path="/bedework/libcache/commons-io-2.0.1.jar"/>
+	<classpathentry kind="output" path="target/test-classes"/>
+</classpath>

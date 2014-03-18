@@ -1,0 +1,47 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1358457579554
+Build-Jdk: 1.7.0_09
+Built-By: douglm
+Bundle-Description: Support for the vCard specification
+Bundle-DocURL: http://micronode.com
+Bundle-License: http://ical4j.hg.sourceforge.net/hgweb/ical4j/ical4j-vca
+ rd/raw-file/tip/LICENSE
+Bundle-ManifestVersion: 2
+Bundle-Name: iCal4j VCard
+Bundle-SymbolicName: org.mnode.ical4j.vcard
+Bundle-Vendor: Micronode
+Bundle-Version: 0.9.6.BW-SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: net.fortuna.ical4j.vcard;uses:="groovy.lang,groovy.util,
+ org.codehaus.groovy.reflection,org.codehaus.groovy.runtime,org.codehaus
+ .groovy.runtime.callsite,org.apache.commons.lang.builder,org.apache.com
+ mons.logging,org.apache.commons.lang,net.fortuna.ical4j.vcard.parameter
+ ,net.fortuna.ical4j.util,net.fortuna.ical4j.model,org.apache.commons.co
+ dec,net.fortuna.ical4j.vcard.property,net.fortuna.ical4j.data,org.codeh
+ aus.groovy.runtime.typehandling,org.apache.commons.io.filefilter";versi
+ on="0.9.6.SNAPSHOT",net.fortuna.ical4j.vcard.parameter;uses:="groovy.la
+ ng,groovy.util,org.codehaus.groovy.runtime.typehandling,org.codehaus.gr
+ oovy.reflection,org.codehaus.groovy.runtime,org.codehaus.groovy.runtime
+ .callsite,net.fortuna.ical4j.vcard,org.apache.commons.lang,net.fortuna.
+ ical4j.util";version="0.9.6.SNAPSHOT",net.fortuna.ical4j.vcard.property
+ ;uses:="net.fortuna.ical4j.vcard,groovy.lang,groovy.util,org.codehaus.g
+ roovy.reflection,org.codehaus.groovy.runtime,org.codehaus.groovy.runtim
+ e.callsite,org.apache.commons.codec,net.fortuna.ical4j.util,net.fortuna
+ .ical4j.model,net.fortuna.ical4j.vcard.parameter,org.apache.commons.lan
+ g,org.codehaus.groovy.runtime.typehandling,org.apache.commons.logging,o
+ rg.apache.commons.codec.binary";version="0.9.6.SNAPSHOT"
+Import-Package: groovy.lang;resolution:=optional;version="[1.8,2)",groov
+ y.util;resolution:=optional;version="[1.8,2)",net.fortuna.ical4j.data;v
+ ersion="[1.0,2)",net.fortuna.ical4j.model;version="[1.0,2)",net.fortuna
+ .ical4j.util;version="[1.0,2)",org.apache.commons.codec;resolution:=opt
+ ional;version="[1.5,2)",org.apache.commons.codec.binary;resolution:=opt
+ ional;version="[1.5,2)",org.apache.commons.io.filefilter;resolution:=op
+ tional;version="[2.3,3)",org.apache.commons.lang;version="[2.6,3)",org.
+ apache.commons.lang.builder;version="[2.6,3)",org.apache.commons.loggin
+ g,org.codehaus.groovy.reflection;resolution:=optional;version="[1.8,2)"
+ ,org.codehaus.groovy.runtime;resolution:=optional;version="[1.8,2)",org
+ .codehaus.groovy.runtime.callsite;resolution:=optional;version="[1.8,2)
+ ",org.codehaus.groovy.runtime.typehandling;resolution:=optional;version
+ ="[1.8,2)"
+Originally-Created-By: Apache Maven Bundle Plugin
+Tool: Bnd-1.50.0
