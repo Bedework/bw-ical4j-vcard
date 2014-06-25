@@ -31,18 +31,17 @@
  */
 package net.fortuna.ical4j.vcard;
 
+import net.fortuna.ical4j.vcard.Group.Id;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import net.fortuna.ical4j.vcard.Group.Id;
-
 /**
  * A registry for standard and non-standard property groups.
- * 
+ *
  * $Id$
  *
  * Created on: 05/01/2009
@@ -53,13 +52,13 @@ import net.fortuna.ical4j.vcard.Group.Id;
 public class GroupRegistry {
 
     private static final Log LOG = LogFactory.getLog(GroupRegistry.class);
-    
+
     private final Map<Id, Group> defaultGroups;
-    
+
     private final Map<String, Group> extendedGroups;
-    
+
     /**
-     * 
+     *
      */
     public GroupRegistry() {
         defaultGroups = new HashMap<Id, Group>();
@@ -67,22 +66,27 @@ public class GroupRegistry {
         defaultGroups.put(Id.WORK, Group.WORK);
         extendedGroups = new ConcurrentHashMap<String, Group>();
     }
-    
+
     /**
      * @param value a string representation of a group identifier
      * @return a registered group with the specified identifier. If no such group
      * is found null is returned
      */
     public Group getGroup(final String value) {
+        Id id = null;
         try {
-            return defaultGroups.get(Id.valueOf(value));
+            id = Id.valueOf(value);
         }
-        catch (Exception e) {
-            LOG.info("Not a default group: [" + value + "]");
+        catch (final Exception ignored) {
         }
+
+        if (id != null) {
+            return defaultGroups.get(id);
+        }
+
         return extendedGroups.get(value);
     }
-    
+
     /**
      * Registers a non-standard group.
      * @param extendedName the extended name of the group
