@@ -262,7 +262,8 @@ public final class VCardBuilder {
                     Xproperty.ExtendedFactory xfactory =
                             (Xproperty.ExtendedFactory) factory;
                     if (group != null) {
-                        return xfactory.createProperty(group, params, propertyValue);
+                        return xfactory.createProperty(group, propertyName,
+                                params, propertyValue);
                     }
                     else {
                         return xfactory.createProperty(propertyName, params,
