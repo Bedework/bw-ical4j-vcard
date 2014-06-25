@@ -233,14 +233,18 @@ public final class VCardBuilder {
             Group group = null;
             boolean xprop = false;
 
-            String propertyName = matcher.group().toUpperCase();
+            String propertyName = matcher.group();
             if (propertyName.indexOf('.') >= 0) {
                 final String[] groupProperty = propertyName.split("\\.");
                 group = groupRegistry.getGroup(groupProperty[0]);
-                propertyName = groupProperty[1];
+                if (group == null) {
+                    group = new Group(groupProperty[0]);
+                }
+                propertyName = groupProperty[1].toUpperCase();
                 factory = propertyFactoryRegistry.getFactory(propertyName);
             }
             else {
+                propertyName = propertyName.toUpperCase();
                 factory = propertyFactoryRegistry.getFactory(propertyName);
             }
 
