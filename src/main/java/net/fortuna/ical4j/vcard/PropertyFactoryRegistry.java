@@ -31,10 +31,6 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import net.fortuna.ical4j.vcard.Property.Id;
 import net.fortuna.ical4j.vcard.property.AccessibilityInfo;
 import net.fortuna.ical4j.vcard.property.Accessible;
@@ -94,9 +90,12 @@ import net.fortuna.ical4j.vcard.property.Uid;
 import net.fortuna.ical4j.vcard.property.Url;
 import net.fortuna.ical4j.vcard.property.Version;
 import net.fortuna.ical4j.vcard.property.XML;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Registry for standard and non-standard property factories.
@@ -192,12 +191,17 @@ public class PropertyFactoryRegistry {
      * @return a property factory for creating a property of the resolved type
      */
     public PropertyFactory<? extends Property> getFactory(final String value) {
+        Id id = null;
         try {
-            return defaultFactories.get(Id.valueOf(value));
+            id = Id.valueOf(value);
         }
-        catch (Exception e) {
-            LOG.info("Not a default property: [" + value + "]");
+        catch (final Exception ignored) {
         }
+
+        if (id != null) {
+            return defaultFactories.get(id);
+        }
+
         return extendedFactories.get(value);
     }
 

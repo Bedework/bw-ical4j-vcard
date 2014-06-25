@@ -31,7 +31,12 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static org.apache.commons.lang.StringUtils.isNotEmpty;
+import net.fortuna.ical4j.model.Escapable;
+import net.fortuna.ical4j.model.ValidationException;
+import net.fortuna.ical4j.util.Strings;
+import net.fortuna.ical4j.vcard.parameter.Value;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
@@ -40,13 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import net.fortuna.ical4j.model.Escapable;
-import net.fortuna.ical4j.model.ValidationException;
-import net.fortuna.ical4j.util.Strings;
-import net.fortuna.ical4j.vcard.parameter.Value;
-
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 /**
  * A vCard property.
@@ -404,7 +403,7 @@ public abstract class Property implements Serializable {
             b.append('.');
         }
         if (Id.EXTENDED.equals(id)) {
-            b.append("X-");
+//            b.append("X-");
             b.append(extendedName);
         }
         else {

@@ -31,11 +31,13 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import net.fortuna.ical4j.data.ParserException;
+import net.fortuna.ical4j.data.UnfoldingReader;
+import net.fortuna.ical4j.util.CompatibilityHints;
+import net.fortuna.ical4j.vcard.property.Xproperty;
+import org.apache.commons.codec.DecoderException;
+
+import java.io.*;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.text.ParseException;
@@ -44,12 +46,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.data.UnfoldingReader;
-import net.fortuna.ical4j.util.CompatibilityHints;
-
-import org.apache.commons.codec.DecoderException;
 
 /**
  * vCard object builder.
@@ -235,26 +231,40 @@ public final class VCardBuilder {
         if (matcher.find()) {
             PropertyFactory<?> factory = null;
             Group group = null;
+            boolean xprop = false;
 
-            final String propertyName = matcher.group().toUpperCase();
+            String propertyName = matcher.group().toUpperCase();
             if (propertyName.indexOf('.') >= 0) {
                 final String[] groupProperty = propertyName.split("\\.");
                 group = groupRegistry.getGroup(groupProperty[0]);
-                factory = propertyFactoryRegistry.getFactory(groupProperty[1]);
+                propertyName = groupProperty[1];
+                factory = propertyFactoryRegistry.getFactory(propertyName);
             }
             else {
                 factory = propertyFactoryRegistry.getFactory(propertyName);
             }
 
             if (factory == null) {
-                return null;
+                /* Create an x-property to hold it */
+                factory = Xproperty.FACTORY;
+                xprop = true;
             }
 
             matcher = PROPERTY_VALUE_PATTERN.matcher(line);
             if (matcher.find()) {
                 final String propertyValue = matcher.group(0);
                 final List<Parameter> params = parseParameters(line);
-                if (group != null) {
+                if (xprop) {
+                    Xproperty.ExtendedFactory xfactory =
+                            (Xproperty.ExtendedFactory) factory;
+                    if (group != null) {
+                        return xfactory.createProperty(group, params, propertyValue);
+                    }
+                    else {
+                        return xfactory.createProperty(propertyName, params,
+                                propertyValue);
+                    }
+                } else if (group != null) {
                     return factory.createProperty(group, params, propertyValue);
                 }
                 else {

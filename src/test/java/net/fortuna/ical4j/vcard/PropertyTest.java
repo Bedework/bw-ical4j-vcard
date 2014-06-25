@@ -31,40 +31,36 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static net.fortuna.ical4j.util.Strings.escape;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import net.fortuna.ical4j.model.Escapable;
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.Strings;
 import net.fortuna.ical4j.vcard.Parameter.Id;
 import net.fortuna.ical4j.vcard.parameter.Type;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static net.fortuna.ical4j.util.Strings.escape;
+import static org.junit.Assert.*;
+
 @RunWith(Parameterized.class)
 public class PropertyTest {
 
     private final Property property;
-    
+
     private final String expectedName;
-    
+
     private final String expectedValue;
-    
+
     private final Parameter[] expectedParams;
-    
+
     private final Property expectedEqualTo;
-    
+
     /**
      * @param property
      * @param expectedName
@@ -79,7 +75,7 @@ public class PropertyTest {
         // XXX: insert proper copy here..
         this.expectedEqualTo = property;
     }
-    
+
     /**
      * Test method for {@link net.fortuna.ical4j.vcard.Property#getParameters()}.
      */
@@ -119,7 +115,7 @@ public class PropertyTest {
             }
         }
     }
-    
+
     /**
      * Test method for {@link net.fortuna.ical4j.vcard.Property#getValue()}.
      */
@@ -147,7 +143,7 @@ public class PropertyTest {
             b.append(expectedValue);
         }
         b.append(Strings.LINE_SEPARATOR);
-        
+
         assertEquals(b.toString(), property.toString());
     }
 
@@ -155,7 +151,7 @@ public class PropertyTest {
     public void testEquals() {
         assertTrue(property.equals(expectedEqualTo));
     }
-    
+
     @SuppressWarnings("serial")
     @Parameters
     public static Collection<Object[]> parameters() throws Exception {
@@ -173,7 +169,7 @@ public class PropertyTest {
             public void validate() throws ValidationException {
             }
         };
-        params.add(new Object[] {extended, "X-extended", "value", new Parameter[] {}});
+        params.add(new Object[] {extended, "extended", "value", new Parameter[] {}});
 
         Parameter extendedParam = new Parameter("extended-param") {
             @Override
@@ -181,7 +177,7 @@ public class PropertyTest {
                 return null;
             }
         };
-        
+
         extended = new Property("extended2") {
             @Override
             public String getValue() {
@@ -196,8 +192,8 @@ public class PropertyTest {
         };
         extended.getParameters().add(Type.WORK);
         extended.getParameters().add(extendedParam);
-        
-        params.add(new Object[] {extended, "X-extended2", "value2", new Parameter[] {Type.WORK, extendedParam}});
+
+        params.add(new Object[] {extended, "extended2", "value2", new Parameter[] {Type.WORK, extendedParam}});
         return params;
     }
 
