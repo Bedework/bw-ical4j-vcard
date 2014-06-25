@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: net.fortuna.ical4j.vcard.ParameterFactoryRegistryTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
