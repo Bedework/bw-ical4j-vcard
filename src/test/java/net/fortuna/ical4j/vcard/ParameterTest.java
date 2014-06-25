@@ -31,29 +31,29 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(Parameterized.class)
 public class ParameterTest {
 
     private final Parameter parameter;
-    
+
     private final String expectedName;
-    
+
     private final String expectedValue;
-    
+
     private final Parameter expectedEqualTo;
-    
+
     /**
      * @param parameter
      */
@@ -69,7 +69,7 @@ public class ParameterTest {
     public void testGetValue() {
         assertEquals(expectedValue, parameter.getValue());
     }
-    
+
     /**
      * Test method for {@link net.fortuna.ical4j.vcard.Parameter#toString()}.
      */
@@ -87,7 +87,7 @@ public class ParameterTest {
     public void testEquals() {
         assertTrue(parameter.equals(expectedEqualTo));
     }
-    
+
     /**
      * @return
      */
@@ -95,14 +95,14 @@ public class ParameterTest {
     @Parameters
     public static Collection<Object[]> parameters() {
         List<Object[]> params = new ArrayList<Object[]>();
-        
+
         Parameter extended = new Parameter("extended") {
             @Override
             public String getValue() {
                 return "value";
             }
         };
-        params.add(new Object[] {extended, "X-extended", "value"});
+        params.add(new Object[] {extended, "extended", "value"});
         return params;
     }
 }
