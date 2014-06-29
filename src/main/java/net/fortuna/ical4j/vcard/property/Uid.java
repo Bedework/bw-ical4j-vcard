@@ -31,21 +31,22 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.ParseException;
-import java.util.List;
-
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.Strings;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactory;
+import net.fortuna.ical4j.vcard.parameter.Value;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.util.List;
 
 /**
  * UID property.
- * 
+ *
  * $Id$
  *
  * Created on 21/10/2008
@@ -58,9 +59,11 @@ public final class Uid extends Property {
     public static final PropertyFactory<Uid> FACTORY = new Factory();
 
     private static final long serialVersionUID = -7120539613021006347L;
-    
-    private final URI uri;
-    
+
+    private URI uri;
+
+    private String text;
+
     /**
      * @param uri a URI for a uid definition
      */
@@ -77,9 +80,23 @@ public final class Uid extends Property {
      */
     public Uid(List<Parameter> params, String value) throws URISyntaxException {
         super(Id.UID, params);
-        this.uri = new URI(value);
+        if (Value.TEXT.equals(getParameter(Parameter.Id.VALUE))) {
+            this.text = value;
+            return;
+        }
+
+        if (Value.URI.equals(getParameter(Parameter.Id.VALUE))) {
+            this.uri = new URI(value);
+            return;
+        }
+
+        try {
+            this.uri = new URI(value);
+        } catch (Throwable t) {
+           this.text = value;
+        }
     }
-    
+
     /**
      * @return the uri
      */
@@ -88,10 +105,21 @@ public final class Uid extends Property {
     }
 
     /**
+     * @return the text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**final
      * {@inheritDoc}
      */
     @Override
     public String getValue() {
+        if (text != null) {
+            return text;
+        }
+
         return Strings.valueOf(uri);
     }
 
@@ -100,8 +128,20 @@ public final class Uid extends Property {
      */
     @Override
     public void validate() throws ValidationException {
-        // ; No parameters allowed
-        assertParametersEmpty();
+        // ; Only value parameter allowed
+        assertOneOrLess(Parameter.Id.VALUE);
+
+        if (getParameters().size() > 1) {
+            throw new ValidationException("Illegal parameter count");
+        }
+
+        for (Parameter param : getParameters()) {
+            if (!Value.TEXT.equals(param) &&
+                    !Value.URI.equals(param)) {
+                throw new ValidationException("Illegal parameter ["
+                        + param.getId() + "]");
+            }
+        }
     }
 
     private static class Factory implements PropertyFactory<Uid> {
