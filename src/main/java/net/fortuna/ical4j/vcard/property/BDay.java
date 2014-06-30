@@ -151,6 +151,7 @@ public final class BDay extends Property implements Escapable {
         // ; Only value parameter allowed
         assertOneOrLess(Parameter.Id.VALUE);
 
+        /*
         if (getParameters().size() > 1) {
             throw new ValidationException("Illegal parameter count");
         }
@@ -161,6 +162,7 @@ public final class BDay extends Property implements Escapable {
                         + param.getId() + "]");
             }
         }
+        */
     }
 
     private static class Factory implements PropertyFactory<BDay> {

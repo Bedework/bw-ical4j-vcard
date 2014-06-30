@@ -110,8 +110,6 @@ public final class Xproperty extends Property implements Escapable {
      */
     @Override
     public void validate() throws ValidationException {
-        // ; No parameters allowed
-        assertParametersEmpty();
     }
 
     public static class ExtendedFactory implements PropertyFactory<Xproperty> {
