@@ -24,8 +24,16 @@
         <processorPath useClasspath="true" />
         <module name="ical4j-vcard" />
       </profile>
+      <profile default="false" name="Annotation profile for bw-ical4j-vcard" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="bw-ical4j-vcard" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bw-ical4j-vcard" target="1.5" />
       <module name="ical4j-vcard" target="1.5" />
     </bytecodeTargetLevel>
   </component>
@@ -59,7 +67,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ical4j-vcard.iml" filepath="$PROJECT_DIR$/ical4j-vcard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bw-ical4j-vcard.iml" filepath="$PROJECT_DIR$/bw-ical4j-vcard.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
