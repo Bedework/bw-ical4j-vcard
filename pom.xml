@@ -10,6 +10,12 @@
 	<description>A fork of ical4j-vcard with customizations for bedework</description>
     <url>https://github.com/Bedework/bw-ical4j-vcard</url>
 
+	<properties>
+		<groovy.version>1.8.6</groovy.version>
+		<spock.version>0.6-groovy-1.8</spock.version>
+		<junit.version>4.10</junit.version>
+	</properties>
+
     <issueManagement>
         <system>Github</system>
         <url>https://github.com/Bedework/bw-ical4j-vcard/issues</url>
@@ -188,24 +194,27 @@
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
 			<optional>true</optional>
+            <version>${groovy.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+            <version>${junit.version}</version>
 		</dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
             <scope>test</scope>
+            <version>${spock.version}</version>
         </dependency>
 
 		<!-- Shared tool resources -->
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
+            <groupId>org.mnode</groupId>
             <artifactId>mnode-tools</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.16</version>
             <classifier>resources</classifier>
             <type>zip</type>
             <scope>provided</scope>
