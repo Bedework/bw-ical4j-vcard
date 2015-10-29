@@ -31,14 +31,6 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import static net.fortuna.ical4j.util.Strings.escape;
-import static net.fortuna.ical4j.util.Strings.unescape;
-import static org.apache.commons.lang.StringUtils.isNotEmpty;
-
-import java.net.URISyntaxException;
-import java.text.ParseException;
-import java.util.List;
-
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.CompatibilityHints;
 import net.fortuna.ical4j.vcard.Group;
@@ -47,9 +39,17 @@ import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Type;
 
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.util.List;
+
+import static net.fortuna.ical4j.util.Strings.escape;
+import static net.fortuna.ical4j.util.Strings.unescape;
+import static org.apache.commons.lang.StringUtils.isNotEmpty;
+
 /**
  * ADDRESS property.
- * 
+ *
  * $Id$
  *
  * Created on 23/08/2008
@@ -64,19 +64,19 @@ public final class Address extends Property {
     public static final PropertyFactory<Address> FACTORY = new Factory();
 
     private String poBox;
-    
+
     private String extended;
-    
+
     private String street;
-    
+
     private String locality;
-    
+
     private String region;
-    
+
     private String postcode;
-    
+
     private String country;
-    
+
     /**
      * @param poBox post office box address component
      * @param extended extended address component
@@ -122,6 +122,7 @@ public final class Address extends Property {
     /**
      * @param params property parameters
      * @param value string representation of an address value
+     * @throws ParseException for bad format
      */
     public Address(List<Parameter> params, String value) throws ParseException {
         this(null, params, value);
@@ -132,6 +133,7 @@ public final class Address extends Property {
      * @param group property group
      * @param params property parameters
      * @param value string representation of an address value
+     * @throws ParseException for bad format
      */
     public Address(Group group, List<Parameter> params, String value) throws ParseException {
         super(group, Id.ADR, params);
@@ -141,8 +143,8 @@ public final class Address extends Property {
         	parseValue(value);
         }
     }
-    
-	
+
+
 
 	private void parseValue(String value) throws ParseException {
     	final String[] components = value.split(";");
@@ -160,7 +162,7 @@ public final class Address extends Property {
             this.country = components[6];
         }
     }
-	
+
 	private void parseValueRelaxed(String value) {
 		final String[] components = value.split(";");
 		final int length = components.length;
@@ -169,38 +171,38 @@ public final class Address extends Property {
 		} else {
 			this.poBox = "";
 		}
-		
+
 		if (length >= 2) {
 			this.extended = components[1];
 		} else {
 			this.extended = "";
 		}
-		
+
 		if (length >= 3) {
 			this.street = components[2];
 		} else {
 			this.street = "";
 		}
-        
+
 		if (length >= 4) {
 			this.locality = components[3];
 		} else {
 			this.locality = "";
 		}
-        
+
 		if (length >= 5) {
 			this.region = components[4];
 		} else {
 			this.region = "";
 		}
-        
+
         // support VCARD 3.0 by allowing optional section..
 		if (length >= 6) {
 			this.postcode = components[5];
 		} else {
 			this.postcode = null;
 		}
-		
+
 		if (length >= 7) {
 			this.country = components[6];
 		} else {
@@ -208,7 +210,7 @@ public final class Address extends Property {
 		}
 
 	}
-    
+
     /**
      * @return the poBox
      */
@@ -314,13 +316,13 @@ public final class Address extends Property {
             }
         }
     }
-    
+
     private static class Factory implements PropertyFactory<Address> {
 
         /**
          * {@inheritDoc}
          */
-        public Address createProperty(final List<Parameter> params, 
+        public Address createProperty(final List<Parameter> params,
         		                      final String value) throws ParseException {
             return new Address(params, unescape(value));
         }

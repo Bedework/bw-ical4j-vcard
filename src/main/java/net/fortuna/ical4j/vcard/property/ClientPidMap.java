@@ -31,15 +31,15 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import java.net.URISyntaxException;
-import java.text.ParseException;
-import java.util.List;
-
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactory;
+
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.util.List;
 
 /**
  * GEO property.
@@ -64,8 +64,8 @@ public final class ClientPidMap extends Property {
     private String urn;
 
     /**
-     * @param pid
-     * @param urn
+     * @param pid the pid
+     * @param urn the urn
      */
     public ClientPidMap(final int pid, final String urn) {
         super(Id.CLIENTPIDMAP);

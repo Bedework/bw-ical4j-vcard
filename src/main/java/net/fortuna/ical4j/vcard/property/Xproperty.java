@@ -64,6 +64,7 @@ public final class Xproperty extends Property implements Escapable {
     private final String value;
 
     /**
+     * @param extendedName the extended name
      * @param value a name value
      */
     public Xproperty(final String extendedName,
@@ -74,6 +75,7 @@ public final class Xproperty extends Property implements Escapable {
 
     /**
      * Factory constructor.
+     * @param extendedName the extended name
      * @param params property parameters
      * @param value string representation of a property value
      */
@@ -86,6 +88,8 @@ public final class Xproperty extends Property implements Escapable {
 
     /**
      * Factory constructor.
+     * @param group the group name
+     * @param extendedName the extended name
      * @param params property parameters
      * @param value string representation of a property value
      */

@@ -31,9 +31,6 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import java.net.URISyntaxException;
-import java.util.List;
-
 import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
@@ -42,7 +39,6 @@ import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Encoding;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.parameter.Value;
-
 import org.apache.commons.codec.BinaryDecoder;
 import org.apache.commons.codec.BinaryEncoder;
 import org.apache.commons.codec.DecoderException;
@@ -50,6 +46,9 @@ import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * KEY property.
@@ -74,7 +73,7 @@ public final class XML extends Property {
     private final Log log = LogFactory.getLog(XML.class);
 
     /**
-     * @param uri a key URI
+     * @param value a key URI
      */
     public XML(final String value) {
         super(Id.XML);

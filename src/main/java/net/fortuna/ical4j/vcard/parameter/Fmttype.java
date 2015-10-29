@@ -31,14 +31,14 @@
  */
 package net.fortuna.ical4j.vcard.parameter;
 
-import java.text.ParseException;
-
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.ParameterFactory;
 
+import java.text.ParseException;
+
 /**
  * FMTTYPE parameter.
- * 
+ *
  * Created on 20/09/2010
  *
  * @author Mike Douglass
@@ -47,32 +47,33 @@ import net.fortuna.ical4j.vcard.ParameterFactory;
 public final class Fmttype extends Parameter {
 
     private static final long serialVersionUID = 12345L;
- 
+
     public static final ParameterFactory<Fmttype> FACTORY = new Factory();
-    
+
     private String value;
-    
+
     private String type;
-    
+
     private String subtype;
-    
+
     /**
      * Factory constructor.
      * @param value string representation of a property value
+     * @throws ParseException for bad format
      */
     public Fmttype(String value) throws ParseException {
         super(Id.FMTTYPE);
         this.value = value;
         final String[] segments = value.split("/", -1);
-        
+
         if (segments.length != 2) {
         	throw new ParseException("Value must be type \"/\" subtype", 0);
         }
-        
+
         type = segments[0];
         subtype = segments[1];
     }
-    
+
     /**
      * {@inheritDoc}
      */
