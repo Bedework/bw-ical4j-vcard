@@ -31,3 +31,10 @@ When the build completes, and the changes are committed and pushed successfully,
 > mvn release:perform
 
 For full details, see [Sonatype's documentation for using Maven to publish releases](http://central.sonatype.org/pages/apache-maven.html).
+
+### Release Notes
+#### 1.0.1
+Forked off the ical4j release to allow non-snapshot versions.
+
+#### 1.0.2
+Add Property.getExtendedName method
