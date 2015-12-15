@@ -306,6 +306,14 @@ public abstract class Property implements Serializable {
     }
 
     /**
+     *
+     * @return the extended name or null
+     */
+    public String getExtendedName() {
+        return extendedName;
+    }
+
+    /**
      * @return a string representaion of the property propertyName
      */
     public abstract String getValue();
