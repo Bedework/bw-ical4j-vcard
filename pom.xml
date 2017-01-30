@@ -192,7 +192,7 @@
 		<dependency>
 			<groupId>org.bedework</groupId>
 			<artifactId>bw-ical4j-cl</artifactId>
-			<version>1.1.1</version>
+			<version>1.1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -258,6 +258,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>clirr-maven-plugin</artifactId>
+				<version>2.8</version>
 				<configuration>
 					<minSeverity>info</minSeverity>
 					<comparisonVersion>0.9.2</comparisonVersion>
@@ -267,7 +268,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-changelog-plugin</artifactId>
-				<version>2.1</version>
+				<version>1.9.2</version>
                 <configuration>
                     <dateFormat>EEE MMM dd hh:mm:ss yyyy Z</dateFormat>
                 </configuration>
@@ -326,6 +327,10 @@
                                 </goals>
                             </execution>
                         </executions>
+						<configuration>
+							<additionalparam>-Xdoclint:none</additionalparam>
+							<failOnError>false</failOnError>
+						</configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

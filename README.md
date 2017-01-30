@@ -38,3 +38,6 @@ Forked off the ical4j release to allow non-snapshot versions.
 
 #### 1.0.2
 Add Property.getExtendedName method
+
+#### 1.0.3
+bw ical4j dependency
