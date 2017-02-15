@@ -31,17 +31,17 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
+import net.fortuna.ical4j.validate.ValidationException;
+import net.fortuna.ical4j.vcard.Group;
+import net.fortuna.ical4j.vcard.Parameter;
+import net.fortuna.ical4j.vcard.Property;
+import net.fortuna.ical4j.vcard.PropertyFactory;
+
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-import net.fortuna.ical4j.model.ValidationException;
-import net.fortuna.ical4j.vcard.Group;
-import net.fortuna.ical4j.vcard.Parameter;
-import net.fortuna.ical4j.vcard.Property;
-import net.fortuna.ical4j.vcard.PropertyFactory;
 
 /**
  * LANG property.

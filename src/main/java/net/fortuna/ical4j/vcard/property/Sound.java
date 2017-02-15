@@ -36,7 +36,7 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
 
-import net.fortuna.ical4j.model.ValidationException;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.util.CompatibilityHints;
 import net.fortuna.ical4j.util.Strings;
 import net.fortuna.ical4j.vcard.Group;

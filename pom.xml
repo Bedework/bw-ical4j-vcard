@@ -9,6 +9,18 @@
     <url>https://github.com/Bedework/bw-ical4j-vcard</url>
 
 	<properties>
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.source.plugin.version>2.1.2</maven.source.plugin.version>
+		<maven-plugin-annotations.version>3.4</maven-plugin-annotations.version>
+		<maven-plugin-api.version>3.0</maven-plugin-api.version>
+		<maven.jar.plugin.version>2.3.2</maven.jar.plugin.version>
+		<maven.buildHelper.plugin.version>1.7</maven.buildHelper.plugin.version>
+		<maven.antRun.plugin.version>1.7</maven.antRun.plugin.version>
+		<maven.eclipse.plugin.version>2.8</maven.eclipse.plugin.version>
+		<maven.jaxws.plugin.version>2.1</maven.jaxws.plugin.version>
+		<maven.jaxb.plugin.version>1.1.1</maven.jaxb.plugin.version>
+
+		<commons-lang.version>2.3</commons-lang.version>
 		<groovy.version>1.8.6</groovy.version>
 		<spock.version>0.6-groovy-1.8</spock.version>
 		<junit.version>4.10</junit.version>
@@ -73,6 +85,7 @@
 
             <plugin>
               <artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.plugin.version}</version>
               <configuration>
                 <archive>
                   <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
@@ -190,15 +203,28 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.bedework</groupId>
-			<artifactId>bw-ical4j-cl</artifactId>
-			<version>1.1.4</version>
+			<groupId>org.bedework.ical4j</groupId>
+			<artifactId>ical4j</artifactId>
+			<version>2.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>

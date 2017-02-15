@@ -31,25 +31,20 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-
 import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.CompatibilityHints;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Property.Id;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.property.Address;
-
 import org.apache.commons.codec.DecoderException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * 

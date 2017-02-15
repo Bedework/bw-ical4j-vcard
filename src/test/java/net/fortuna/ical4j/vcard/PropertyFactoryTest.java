@@ -39,7 +39,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.fortuna.ical4j.model.ValidationException;
+import net.fortuna.ical4j.validate.ValidationException;
 
 import org.apache.commons.codec.DecoderException;
 import org.junit.Test;

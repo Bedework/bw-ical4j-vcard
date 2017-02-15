@@ -31,6 +31,14 @@
  */
 package net.fortuna.ical4j.vcard;
 
+import net.fortuna.ical4j.data.ParserException;
+import net.fortuna.ical4j.util.CompatibilityHints;
+import net.fortuna.ical4j.validate.ValidationException;
+import net.fortuna.ical4j.vcard.parameter.Type;
+import org.apache.commons.codec.DecoderException;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -38,15 +46,6 @@ import java.io.Reader;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
-
-import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.model.ValidationException;
-import net.fortuna.ical4j.util.CompatibilityHints;
-import net.fortuna.ical4j.vcard.parameter.Type;
-
-import org.apache.commons.codec.DecoderException;
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * VCards generated with Outlook 12 often contain a certain extended property

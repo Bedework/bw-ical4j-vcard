@@ -31,14 +31,9 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.text.ParseException;
-import java.util.List;
-
-import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.CompatibilityHints;
 import net.fortuna.ical4j.util.Strings;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
@@ -46,7 +41,6 @@ import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Encoding;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.parameter.Value;
-
 import org.apache.commons.codec.BinaryDecoder;
 import org.apache.commons.codec.BinaryEncoder;
 import org.apache.commons.codec.DecoderException;
@@ -54,6 +48,11 @@ import org.apache.commons.codec.EncoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.ParseException;
+import java.util.List;
 
 /**
  * LOGO property.

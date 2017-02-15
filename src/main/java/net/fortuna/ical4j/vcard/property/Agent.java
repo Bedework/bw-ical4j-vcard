@@ -31,20 +31,20 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import static net.fortuna.ical4j.util.Strings.unescape;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-
 import net.fortuna.ical4j.model.Escapable;
-import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.Strings;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Value;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+
+import static net.fortuna.ical4j.util.Strings.unescape;
 
 /**
  * AGENT property.

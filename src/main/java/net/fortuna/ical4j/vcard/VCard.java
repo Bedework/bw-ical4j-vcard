@@ -31,20 +31,16 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.concurrent.CopyOnWriteArrayList;
-
 import net.fortuna.ical4j.model.Escapable;
-import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.Strings;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Property.Id;
 import net.fortuna.ical4j.vcard.property.Kind;
 import net.fortuna.ical4j.vcard.property.Version;
+
+import java.io.Serializable;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * vCard object.

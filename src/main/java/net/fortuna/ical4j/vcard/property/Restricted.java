@@ -31,16 +31,16 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import java.text.ParseException;
-import java.util.List;
-
-import net.fortuna.ical4j.model.ValidationException;
 import net.fortuna.ical4j.util.Strings;
+import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.Property;
 import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Type;
+
+import java.text.ParseException;
+import java.util.List;
 
 /**
  * RESTRICTEDACCESS property.
