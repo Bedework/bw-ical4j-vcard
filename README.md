@@ -41,3 +41,9 @@ Add Property.getExtendedName method
 
 #### 1.0.3
 bw ical4j dependency
+
+#### 1.0.4
+bw ical4j dependency
+
+#### 1.0.5
+ical4j 2.x dependency

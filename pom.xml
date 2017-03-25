@@ -20,6 +20,8 @@
 		<maven.jaxws.plugin.version>2.1</maven.jaxws.plugin.version>
 		<maven.jaxb.plugin.version>1.1.1</maven.jaxb.plugin.version>
 
+		<ical4j.version>2.0.4</ical4j.version>
+		
 		<commons-lang.version>2.3</commons-lang.version>
 		<groovy.version>1.8.6</groovy.version>
 		<spock.version>0.6-groovy-1.8</spock.version>
@@ -205,7 +207,7 @@
 		<dependency>
 			<groupId>org.bedework.ical4j</groupId>
 			<artifactId>ical4j</artifactId>
-			<version>2.0.2</version>
+			<version>${ical4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
