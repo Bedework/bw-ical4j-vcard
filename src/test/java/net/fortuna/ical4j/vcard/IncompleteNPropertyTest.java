@@ -66,7 +66,6 @@ import static org.junit.Assert.assertEquals;
  * @throws ParserException
  * @throws IOException
  * @throws ValidationException
- * @throws DecoderException
  */
 public class IncompleteNPropertyTest {
 
@@ -82,7 +81,7 @@ public class IncompleteNPropertyTest {
     
 	@Test
 	public void testNPropertyExample() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		final Reader reader = new InputStreamReader(getClass().getResourceAsStream(
 				"/samples/invalid/vcard-incompletenproperty.vcf"));
 		GroupRegistry groupRegistry = new GroupRegistry();
@@ -109,9 +108,8 @@ public class IncompleteNPropertyTest {
 	/**
 	 * @param prop
 	 * @return
-	 * @throws DecoderException 
 	 */
-	private String getDecodedPropertyalue(Property prop) throws DecoderException {
+	private String getDecodedPropertyalue(Property prop) {
 		Encoding enc = (Encoding)prop.getParameter(Parameter.Id.ENCODING);
 		String val = prop.getValue();
 		if (enc != null && enc.getValue().equalsIgnoreCase("QUOTED-PRINTABLE")) {
@@ -122,9 +120,13 @@ public class IncompleteNPropertyTest {
 			if (val.endsWith("=")) {
 				val = val.substring(0,val.length() - 1);
 			}
-			
+
 			QuotedPrintableCodec codec = new QuotedPrintableCodec();
-			return codec.decode(val);
+			try {
+				return codec.decode(val);
+			} catch (DecoderException e) {
+				throw new IllegalArgumentException(e);
+			}
 		} else {
 			return val;
 		}

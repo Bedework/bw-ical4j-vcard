@@ -31,7 +31,12 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static junit.framework.Assert.assertEquals;
+import net.fortuna.ical4j.vcard.property.Org;
+import net.fortuna.ical4j.vcard.property.Version;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.net.URISyntaxException;
 import java.text.ParseException;
@@ -39,14 +44,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.fortuna.ical4j.vcard.property.Org;
-import net.fortuna.ical4j.vcard.property.Version;
-
-import org.apache.commons.codec.DecoderException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import static junit.framework.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class PropertyFactoryRegistryTest {
@@ -79,10 +77,9 @@ public class PropertyFactoryRegistryTest {
     /**
      * @throws URISyntaxException
      * @throws ParseException
-     * @throws DecoderException 
      */
     @Test
-    public void testGetFactoryCreateProperty() throws URISyntaxException, ParseException, DecoderException {
+    public void testGetFactoryCreateProperty() throws URISyntaxException, ParseException {
         PropertyFactory<? extends Property> factory = registry.getFactory(propertyName);
         if (group != null) {
             assertEquals(expectedProperty, factory.createProperty(group, new ArrayList<Parameter>(), propertyValue));

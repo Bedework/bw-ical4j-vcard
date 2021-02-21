@@ -39,7 +39,6 @@ import net.fortuna.ical4j.vcard.property.Key;
 import net.fortuna.ical4j.vcard.property.Logo;
 import net.fortuna.ical4j.vcard.property.Photo;
 import net.fortuna.ical4j.vcard.property.Sound;
-import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 
 import java.io.File;
@@ -64,7 +63,7 @@ public class ValueEqualsURLTest {
 
 	@Test
 	public void testPhotoValueEqualsURL() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"./src/test/resources/samples/vcard-antoni-outlook2003-valueurl.vcf");
 		Reader reader = new FileReader(file);

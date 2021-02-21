@@ -41,17 +41,13 @@ import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Encoding;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.parameter.Value;
-import org.apache.commons.codec.BinaryDecoder;
-import org.apache.commons.codec.BinaryEncoder;
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.EncoderException;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -110,9 +106,9 @@ public final class Photo extends Property {
      * @param params property parameters
      * @param value string representation of a property value
      * @throws URISyntaxException where the specified URI value is not a valid URI
-     * @throws DecoderException where the specified photo data value cannot be decoded
+     * @throws IllegalArgumentException where the specified photo data value cannot be decoded
      */
-    public Photo(List<Parameter> params, String value) throws URISyntaxException, DecoderException {
+    public Photo(List<Parameter> params, String value) throws URISyntaxException {
         super(Id.PHOTO, params);
         final Parameter valueParameter = getParameter(Parameter.Id.VALUE);
         
@@ -126,8 +122,7 @@ public final class Photo extends Property {
         	this.uri = new URI(value);
         }
         else {
-            final BinaryDecoder decoder = new Base64();
-            this.binary = decoder.decode(value.getBytes());
+            this.binary = Base64.getDecoder().decode(value);
         }
     }
     
@@ -156,10 +151,9 @@ public final class Photo extends Property {
         }
         else if (binary != null) {
             try {
-                final BinaryEncoder encoder = new Base64();
-                stringValue = new String(encoder.encode(binary));
+                stringValue = Base64.getEncoder().encodeToString(binary);
             }
-            catch (EncoderException ee) {
+            catch (IllegalArgumentException ee) {
                 log.error("Error encoding binary data", ee);
             }
         }
@@ -182,8 +176,8 @@ public final class Photo extends Property {
         /**
          * {@inheritDoc}
          */
-        public Photo createProperty(final List<Parameter> params, final String value) throws URISyntaxException,
-            DecoderException {
+        public Photo createProperty(final List<Parameter> params, final String value)
+                throws URISyntaxException {
             
             return new Photo(params, value);
         }

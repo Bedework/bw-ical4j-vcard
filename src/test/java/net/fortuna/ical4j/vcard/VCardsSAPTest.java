@@ -33,7 +33,6 @@ package net.fortuna.ical4j.vcard;
 
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.validate.ValidationException;
-import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 
 import java.io.File;
@@ -65,11 +64,10 @@ public class VCardsSAPTest {
 	 * @throws ParserException 
 	 * @throws IOException 
 	 * @throws ValidationException 
-	 * @throws DecoderException 
 	 */
 	@Test
 	public void testVcardsSAPExample() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"src/test/resources/samples/vcard-vCards-SAP.vcf");
 		Reader reader = new FileReader(file);

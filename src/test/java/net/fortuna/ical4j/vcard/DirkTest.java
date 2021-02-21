@@ -84,11 +84,10 @@ public class DirkTest {
 	 * @throws ParserException 
 	 * @throws IOException 
 	 * @throws ValidationException 
-	 * @throws DecoderException 
 	 */
 	@Test
 	public void testDirkExample() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"src/test/resources/samples/vcard-dirk.vcf");
 		Reader reader = new FileReader(file);
@@ -112,9 +111,8 @@ public class DirkTest {
 	/**
 	 * @param prop
 	 * @return
-	 * @throws DecoderException 
 	 */
-	private String getDecodedPropertyalue(Property prop) throws DecoderException {
+	private String getDecodedPropertyalue(Property prop) {
 		Encoding enc = (Encoding)prop.getParameter(Parameter.Id.ENCODING);
 		String val = prop.getValue();
 		if (enc != null && enc.getValue().equalsIgnoreCase("QUOTED-PRINTABLE")) {
@@ -125,9 +123,13 @@ public class DirkTest {
 			if (val.endsWith("=")) {
 				val = val.substring(0,val.length() - 1);
 			}
-			
+
 			QuotedPrintableCodec codec = new QuotedPrintableCodec();
-			return codec.decode(val);
+			try {
+				return codec.decode(val);
+			} catch (DecoderException e) {
+				throw new IllegalArgumentException(e);
+			}
 		} else {
 			return val;
 		}

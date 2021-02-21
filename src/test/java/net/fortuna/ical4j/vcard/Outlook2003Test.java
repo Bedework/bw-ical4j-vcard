@@ -80,11 +80,10 @@ public class Outlook2003Test {
 	 * @throws ParserException 
 	 * @throws IOException 
 	 * @throws ValidationException 
-	 * @throws DecoderException 
 	 */
 	@Test
 	public void testOutlookExample() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"src/test/resources/samples/vcard-antoni-outlook2003.vcf");
 		Reader reader = new FileReader(file);
@@ -168,9 +167,8 @@ public class Outlook2003Test {
 	/**
 	 * @param prop
 	 * @return
-	 * @throws DecoderException 
 	 */
-	private String getDecodedPropertyalue(Property prop) throws DecoderException {
+	private String getDecodedPropertyalue(Property prop) {
 		Encoding enc = (Encoding)prop.getParameter(Parameter.Id.ENCODING);
 		String val = prop.getValue();
 		if (enc != null && enc.getValue().equalsIgnoreCase("QUOTED-PRINTABLE")) {
@@ -183,7 +181,11 @@ public class Outlook2003Test {
 			}
 			
 			QuotedPrintableCodec codec = new QuotedPrintableCodec();
-			return codec.decode(val);
+			try {
+				return codec.decode(val);
+			} catch (DecoderException e) {
+				throw new IllegalArgumentException(e);
+			}
 		} else {
 			return val;
 		}

@@ -31,7 +31,11 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import static org.junit.Assert.*;
+import net.fortuna.ical4j.validate.ValidationException;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.net.URISyntaxException;
 import java.text.ParseException;
@@ -39,13 +43,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.fortuna.ical4j.validate.ValidationException;
-
-import org.apache.commons.codec.DecoderException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class PropertyFactoryTest {
@@ -73,17 +71,16 @@ public class PropertyFactoryTest {
      * Test method for {@link net.fortuna.ical4j.vcard.PropertyFactory#createProperty(java.lang.String)}.
      * @throws ParseException
      * @throws URISyntaxException
-     * @throws DecoderException 
      */
     @Test
-    public void testCreateProperty() throws URISyntaxException, ParseException, DecoderException {
+    public void testCreateProperty() throws URISyntaxException, ParseException {
         Property property = factory.createProperty(new ArrayList<Parameter>(), value);
         assertEquals(extendedName, property.extendedName);
         assertEquals(value, property.getValue());
     }
     
     @Test
-    public void testCreateGroupProperty() throws URISyntaxException, ParseException, DecoderException {
+    public void testCreateGroupProperty() throws URISyntaxException, ParseException {
         Property property = factory.createProperty(group, new ArrayList<Parameter>(), value);
         assertEquals(group, property.getGroup());
         assertEquals(extendedName, property.extendedName);

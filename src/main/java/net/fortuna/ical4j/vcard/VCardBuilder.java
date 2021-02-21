@@ -35,9 +35,12 @@ import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.data.UnfoldingReader;
 import net.fortuna.ical4j.util.CompatibilityHints;
 import net.fortuna.ical4j.vcard.property.Xproperty;
-import org.apache.commons.codec.DecoderException;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
 import java.text.ParseException;
@@ -198,7 +201,7 @@ public final class VCardBuilder {
                 catch (ParseException e) {
                     throw new ParserException("Error parsing line", totalLineNo, e);
                 }
-                catch (DecoderException e) {
+                catch (IllegalArgumentException e) {
                     throw new ParserException("Error parsing line", totalLineNo, e);
                 }
                 if (property != null) {
@@ -224,9 +227,9 @@ public final class VCardBuilder {
      * @return
      * @throws ParseException
      * @throws URISyntaxException
-     * @throws DecoderException
+     * @throws IllegalArgumentException
      */
-    private Property parseProperty(final String line) throws URISyntaxException, ParseException, DecoderException {
+    private Property parseProperty(final String line) throws URISyntaxException, ParseException {
         Matcher matcher = PROPERTY_NAME_PATTERN.matcher(line);
         if (matcher.find()) {
             PropertyFactory<?> factory = null;

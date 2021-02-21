@@ -35,7 +35,6 @@ import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.util.CompatibilityHints;
 import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.parameter.Type;
-import org.apache.commons.codec.DecoderException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -43,8 +42,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.net.URISyntaxException;
-import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -66,7 +63,7 @@ public class XMsCardpictureTest {
 
 	@Test
 	public void testXMSCardpicture() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"./src/test/resources/samples/vcard-antoni-cardpicture.vcf");
 		Reader reader = new FileReader(file);
@@ -115,12 +112,10 @@ public class XMsCardpictureTest {
     	propReg.register("X-MS-CARDPICTURE",
 			new PropertyFactory<Property>() {
 				public Property createProperty(Group group, List<Parameter> params,
-						String value) throws URISyntaxException, ParseException,
-						DecoderException {
+						String value) {
 					return new ExtendedProperty(group, params, value);
 				}
-				public Property createProperty(List<Parameter> params, String value)
-						throws URISyntaxException, ParseException, DecoderException {
+				public Property createProperty(List<Parameter> params, String value) {
 					return new ExtendedProperty(null, params, value);
 				}
 			}

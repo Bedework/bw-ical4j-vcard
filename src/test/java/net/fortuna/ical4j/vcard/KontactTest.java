@@ -34,7 +34,6 @@ package net.fortuna.ical4j.vcard;
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Property.Id;
-import org.apache.commons.codec.DecoderException;
 import org.junit.Test;
 
 import java.io.File;
@@ -68,12 +67,11 @@ public class KontactTest {
 	 * @throws ParserException 
 	 * @throws IOException 
 	 * @throws ValidationException 
-	 * @throws DecoderException 
 	 */
 	@Test
 //	@Ignore
 	public void testKontactExample() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"src/test/resources/samples/vcard-antoni-kontact.vcf");
 		Reader reader = new FileReader(file);

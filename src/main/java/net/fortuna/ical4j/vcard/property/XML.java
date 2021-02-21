@@ -39,15 +39,11 @@ import net.fortuna.ical4j.vcard.PropertyFactory;
 import net.fortuna.ical4j.vcard.parameter.Encoding;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.parameter.Value;
-import org.apache.commons.codec.BinaryDecoder;
-import org.apache.commons.codec.BinaryEncoder;
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.EncoderException;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.net.URISyntaxException;
+import java.util.Base64;
 import java.util.List;
 
 /**
@@ -105,9 +101,9 @@ public final class XML extends Property {
      * Factory constructor.
      * @param params property parameters
      * @param value string representation of a property value
-     * @throws DecoderException if the specified string is not a valid key encoding
+     * @throws IllegalArgumentException if the specified string is not a valid key encoding
      */
-    public XML(final List<Parameter> params, final String value) throws DecoderException {
+    public XML(final List<Parameter> params, final String value) {
         this(null, params, value);
     }
 
@@ -116,10 +112,10 @@ public final class XML extends Property {
      * @param group property group
      * @param params property parameters
      * @param value string representation of a property value
-     * @throws DecoderException if the specified string is not a valid key encoding
+     * @throws IllegalArgumentException if the specified string is not a valid key encoding
      */
     public XML(final Group group, final List<Parameter> params,
-    		   final String value) throws DecoderException {
+    		   final String value) {
         super(group, Id.KEY, params);
         Parameter valueParameter = getParameter(Parameter.Id.VALUE);
 
@@ -127,8 +123,7 @@ public final class XML extends Property {
             this.value = value;
         }
         else {
-            final BinaryDecoder decoder = new Base64();
-            this.binary = decoder.decode(value.getBytes());
+            this.binary = Base64.getDecoder().decode(value);
         }
     }
 
@@ -152,10 +147,9 @@ public final class XML extends Property {
 
         if (binary != null) {
             try {
-                final BinaryEncoder encoder = new Base64();
-                return new String(encoder.encode(binary));
+                return Base64.getEncoder().encodeToString(binary);
             }
-            catch (EncoderException ee) {
+            catch (IllegalArgumentException ee) {
                 log.error("Error encoding binary data", ee);
             }
         }
@@ -173,8 +167,7 @@ public final class XML extends Property {
         /**
          * {@inheritDoc}
          */
-	public XML createProperty(final List<Parameter> params, final String value) throws DecoderException,
-            URISyntaxException {
+	public XML createProperty(final List<Parameter> params, final String value) throws URISyntaxException {
 
             return new XML(params, value);
         }
@@ -183,7 +176,7 @@ public final class XML extends Property {
          * {@inheritDoc}
          */
 	public XML createProperty(final Group group, final List<Parameter> params, final String value)
-            throws DecoderException, URISyntaxException {
+            throws URISyntaxException {
 
             return new XML(group, params, value);
         }

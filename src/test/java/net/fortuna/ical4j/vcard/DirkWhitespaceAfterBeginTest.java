@@ -37,12 +37,15 @@ import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Property.Id;
 import net.fortuna.ical4j.vcard.parameter.Type;
 import net.fortuna.ical4j.vcard.property.Address;
-import org.apache.commons.codec.DecoderException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 import static org.junit.Assert.assertEquals;
 
@@ -90,7 +93,7 @@ public class DirkWhitespaceAfterBeginTest {
 	 */
 	@Test
 	public void testDirkExampleWhitespaceAfterBegin() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		
 		final Reader reader = new InputStreamReader(getClass().getResourceAsStream(
 				"/samples/invalid/vcard-dirk-whitespaceafterbegin.vcf"));
@@ -118,7 +121,7 @@ public class DirkWhitespaceAfterBeginTest {
 	 */
 	@Test
 	public void testDirkExampleWhitespaceAfterBeginRelaxedParsing() throws IOException, ParserException,
-			ValidationException, DecoderException {
+			ValidationException {
 		File file = new File(
 				"./src/test/resources/samples/invalid/vcard-dirk-whitespaceafterbegin.vcf");
 		Reader reader = new FileReader(file);
