@@ -24,7 +24,7 @@
 
 		<ical4j.groupId>org.bedework.ical4j</ical4j.groupId>
 		<ical4j.artifactId>ical4j</ical4j.artifactId>
-		<ical4j.version>3.0.13-SNAPSHOT</ical4j.version>
+		<ical4j.version>3.0.13</ical4j.version>
 		<slf4j.version>1.7.25</slf4j.version>
 
 		<commons-codec.version>1.15</commons-codec.version>
