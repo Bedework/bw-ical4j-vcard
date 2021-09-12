@@ -31,7 +31,7 @@
  */
 package net.fortuna.ical4j.vcard.property;
 
-import net.fortuna.ical4j.model.Escapable;
+import net.fortuna.ical4j.model.Encodable;
 import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Group;
 import net.fortuna.ical4j.vcard.Parameter;
@@ -54,7 +54,7 @@ import static net.fortuna.ical4j.util.Strings.unescape;
  * @author Ben
  *
  */
-public final class Birth extends Property implements Escapable {
+public final class Birth extends Property implements Encodable {
 
     public static final PropertyFactory<Birth> FACTORY = new Factory();
 

@@ -31,7 +31,7 @@
  */
 package net.fortuna.ical4j.vcard;
 
-import net.fortuna.ical4j.model.Escapable;
+import net.fortuna.ical4j.model.Encodable;
 import net.fortuna.ical4j.util.Strings;
 import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.vcard.Property.Id;
@@ -309,7 +309,7 @@ A.3. New Properties and Parameters
         }
         b.append(':');
 
-        if (prop instanceof Escapable) {
+        if (prop instanceof Encodable) {
             b.append(Strings.escape(Strings.valueOf(prop.getValue())));
         }
         else {
