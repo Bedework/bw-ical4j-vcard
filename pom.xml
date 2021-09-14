@@ -4,7 +4,7 @@
 	<groupId>org.bedework</groupId>
 	<artifactId>bw-ical4j-vcard</artifactId>
 	<name>iCal4j VCard</name>
-	<version>1.0.9</version>
+	<version>1.0.10-SNAPSHOT</version>
 	<description>A fork of ical4j-vcard with customizations for bedework</description>
 	<url>https://github.com/Bedework/bw-ical4j-vcard</url>
 
@@ -50,7 +50,7 @@
 		<connection>scm:git:git@github.com:Bedework/bw-ical4j-vcard.git</connection>
 		<developerConnection>scm:git:git@github.com:Bedework/bw-ical4j-vcard.git</developerConnection>
 		<url>https://github.com/Bedework/bw-ical4j-vcard</url>
-		<tag>bw-ical4j-vcard-1.0.9</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<developers>
