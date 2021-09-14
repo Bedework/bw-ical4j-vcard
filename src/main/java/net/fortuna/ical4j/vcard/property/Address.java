@@ -45,7 +45,7 @@ import java.util.List;
 
 import static net.fortuna.ical4j.util.Strings.escape;
 import static net.fortuna.ical4j.util.Strings.unescape;
-import static org.apache.commons.lang.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
  * ADDRESS property.

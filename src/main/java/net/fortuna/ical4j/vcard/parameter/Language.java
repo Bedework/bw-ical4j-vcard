@@ -31,12 +31,11 @@
  */
 package net.fortuna.ical4j.vcard.parameter;
 
-import java.util.Locale;
-
 import net.fortuna.ical4j.vcard.Parameter;
 import net.fortuna.ical4j.vcard.ParameterFactory;
+import org.apache.commons.lang3.StringUtils;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.Locale;
 
 /**
  * LANGUAGE parameter.

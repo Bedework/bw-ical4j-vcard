@@ -35,8 +35,8 @@ import net.fortuna.ical4j.model.Encodable;
 import net.fortuna.ical4j.validate.ValidationException;
 import net.fortuna.ical4j.util.Strings;
 import net.fortuna.ical4j.vcard.parameter.Value;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.text.MessageFormat;
@@ -45,7 +45,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import static org.apache.commons.lang.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
  * A vCard property.
