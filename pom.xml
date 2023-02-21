@@ -144,7 +144,7 @@
 		<dependency>
 			<groupId>org.mnode</groupId>
 			<artifactId>mnode-tools</artifactId>
-			<version>1.16</version>
+			<version>1.22</version>
 			<classifier>resources</classifier>
 			<type>zip</type>
 			<scope>provided</scope>
