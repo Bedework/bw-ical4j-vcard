@@ -10,7 +10,7 @@
 
 	<groupId>org.bedework</groupId>
 	<artifactId>bw-ical4j-vcard</artifactId>
-	<version>1.0.11-SNAPSHOT</version>
+	<version>1.0.11</version>
 
 	<name>iCal4j VCard</name>
 	<description>
